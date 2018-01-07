@@ -1,7 +1,7 @@
 # 100DaysOfCode
 ## My first "100 days of code" challange
 
-This challange is based on the official one: [100daysofcode](http://www.100daysofcode.com), but I have added some extra rule for me: 
+This challange is based on the official one: [100daysofcode](http://www.100daysofcode.com), but I have added some extra rules for me: 
 
 * At least one hour and no more than two hours per day
 * Make something concrete
