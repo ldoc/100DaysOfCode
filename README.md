@@ -20,4 +20,4 @@ And I want to go deeper into this web tech topics:
 * HTML5 WebAPIs (SVG, canvas, media)
 * Maybe ... WebAssembly
 
-##[Check here my progress](https://github.com/ldoc/100DaysOfCode/blob/master/PROGRESS.md)
+## [Check here my progress](https://github.com/ldoc/100DaysOfCode/blob/master/PROGRESS.md)
