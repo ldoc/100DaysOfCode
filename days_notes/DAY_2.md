@@ -1,4 +1,4 @@
-# Day 1
+# Day 2
 ## (9 January 2018)
 
 * Yesterday I forgot to add some things to .gitignore file
@@ -85,4 +85,4 @@ npm install --save-dev url-loader file-loader
 
 * Finally I add the proper config loader to webpack config file
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/07ed24c6d605f1010bffcfb4ea0101e35f82e912
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/2a7c099a0c76552c9c52dd8cd7aaba154371aa19
