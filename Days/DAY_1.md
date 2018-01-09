@@ -5,7 +5,7 @@
 
 ```
 npm init
-```
+``` 
 
 * Then I configure the project:
 ```
