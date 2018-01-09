@@ -94,3 +94,5 @@ class App extends React.Component {
 
 render(<App/>, document.getElementById('app'));
 ```
+
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/07ed24c6d605f1010bffcfb4ea0101e35f82e912
