@@ -28,7 +28,7 @@ npm install --save-dev webpack
 
 * The webpack module and his dependencies are installed in the node_modules directory, I have to avoid this external libraries or modules to be uploded to github, this way I create a .gitignore file and I add the "node_modules" to it.
 
-* To use webpack easily I need to create a webpack.config.js file with the needed configuration. I will check the [https://webpack.js.org/](official webpack site) to remember the basic parameters.
+* To use webpack easily I need to create a webpack.config.js file with the needed configuration. I will check the [official webpack site](https://webpack.js.org) to remember the basic parameters.
 
 ```javascript
 const path = require('path');                     // path module help us to access path routes
@@ -81,15 +81,16 @@ npm install --save react react-dom
   }
 ```
 
-* Creating a very simple component
+* Creating a very simple component into index.js file
 ```javascript
-const path = require('path');                     // path module help us to access path routes
+import React from 'react';
+import {render} from 'react-dom';
 
-module.exports = {
-  entry: './app/src/index.js',                    // My entry file
-  output: {                                       // My output file
-    path: path.resolve(__dirname, './app/dist/'),
-    filename: 'bundle.js'
+class App extends React.Component {
+  render () {
+    return <p> Hello from 100DaysOfCode!</p>;
   }
-};
+}
+
+render(<App/>, document.getElementById('app'));
 ```
