@@ -32,4 +32,4 @@ npm install --save-dev react-loadable
 
 * The lazy loading works incredible and now I can do a more faster and dynamic app.
 
-
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/616b0a7df41bb4adc49c8205f0cadfa97dedea9e
