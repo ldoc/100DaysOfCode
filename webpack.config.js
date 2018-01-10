@@ -32,7 +32,7 @@ module.exports = {
   devtool: 'source-map',
   // Dev Server configuration
   devServer: { 
-    contentBase: './app/dist',
+    contentBase: './app/',
     hot: true // with hot reload
   },
   plugins : [

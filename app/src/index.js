@@ -1,38 +1,33 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import { BrowserRouter, Route, Switch, Link  } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import './style.css';
-import homeImage from './img/home.png';
+import Loadable from 'react-loadable';
 
-class Home extends Component {
-  render(){
-      return (
-        <div>
-          <img src={homeImage} />
-          <h1>Hi from home component</h1>
-          <Link to="/pathToOtherComponent">Go to OtherComponent</Link>
-        </div>
-      );
+const LoadableHome = Loadable({
+  loader: () => import(
+    /* webpackChunkName: "chunk_home" */
+    './components/home.jsx'),
+  loading() {
+    return <div>Loading...</div>
   }
-}
+});
 
-class OtherComponent extends Component {
-  render(){
-      return (
-        <div>
-          <h1>Hi from other component</h1>
-          <Link to="/">Go to sweet home</Link>
-        </div>
-      );
+const LoadableOtherComponent = Loadable({
+  loader: () => import(
+     /* webpackChunkName: "chunk_otherComponent" */
+    './components/otherComponent.jsx'),
+  loading() {
+    return <div>Loading...</div>
   }
-}
+});
 
 class App extends Component {
   render () {
     return  <BrowserRouter>
               <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route exact path="/pathToOtherComponent" component={OtherComponent}/>
+                <Route exact path="/" component={LoadableHome}/>
+                <Route path="/pathToOtherComponent" component={LoadableOtherComponent}/>
               </Switch>
             </BrowserRouter>;
   }
