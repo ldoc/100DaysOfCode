@@ -4,17 +4,22 @@ const DIST_DIR = path.resolve(__dirname, 'app/dist'); // Distribution directory
 const webpack = require('webpack');
 
 module.exports = {
-  entry: SRC_DIR + '/index.js', // My entry file
+  entry: {
+    client: SRC_DIR + '/index.js' // My entry file
+  },
   // My output file
   output: { 
     path: DIST_DIR,
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/',
+    chunkFilename: '[name].bundle.js'
   },
   module : {
-    loaders : [
+    rules : [
       // Loader for JSX files  
-      {                                   
+      {           
         test : /\.jsx?/,
+        exclude: /node_modules|libs/,                    
         include : SRC_DIR,
         loader : 'babel-loader'
       },
@@ -33,7 +38,8 @@ module.exports = {
   // Dev Server configuration
   devServer: { 
     contentBase: './app/',
-    hot: true // with hot reload
+    hot: true, // with hot reload
+    historyApiFallback: true
   },
   plugins : [
     new webpack.NamedModulesPlugin(),

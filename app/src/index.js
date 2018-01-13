@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import './style.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
+import './style.css';
 
 const LoadableHome = Loadable({
   loader: () => import(

@@ -1,4 +1,4 @@
 {
-  "presets" : ["stage-3", "react"],
-  "plugins": ["syntax-dynamic-import"]
+  "presets" : ["env", "react"],
+  "plugins": ["dynamic-import-webpack"]
 }
