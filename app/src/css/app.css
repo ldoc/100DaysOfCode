@@ -1,0 +1,72 @@
+body,html {
+  margin: 0px;
+  width: 100%;
+  height: 100vh;
+  font-size: 12px;
+}
+
+#app {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 40px auto;
+  grid-template-areas: 
+    "menubar menubar menubar menubar"
+    ". content content .";
+  background-color: cornflowerblue;
+  width: 100%;
+  height: 100vh;
+  font-family: arial;
+}
+
+.separation {
+  grid-area: margin;
+}
+
+#content {
+  grid-area: content;
+  background-color: blue;
+}
+
+@media (min-width: 1281px) {
+  #app {
+    font-size: 2.0em;
+    grid-template-rows: 80px auto;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+  
+  #app {
+    font-size: 2.0em;
+    grid-template-rows: 80px auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  #app {
+    font-size: 1.4em;
+    grid-template-rows: 60px auto;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  #app {
+    font-size: 1.4em;
+    grid-template-rows: 60px auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  #app {
+    font-size: 1.0em;
+    grid-template-rows: 40px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  #app {
+    font-size: 1.0em;
+    grid-template-rows: 40px auto;
+  }
+}

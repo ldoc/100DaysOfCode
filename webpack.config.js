@@ -14,6 +14,9 @@ module.exports = {
     publicPath: '/',
     chunkFilename: '[name].bundle.js'
   },
+  resolve: {
+    extensions: [ '.js', '.json', '.jsx', 'css' ]
+  },
   module : {
     rules : [
       // Loader for JSX files  

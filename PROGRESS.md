@@ -8,3 +8,5 @@
 * [Day 4](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_4.md) 
 * [Day 5](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_5.md) 
 * [Day 6](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_6.md)
+* [Day 7](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_7.md)
+

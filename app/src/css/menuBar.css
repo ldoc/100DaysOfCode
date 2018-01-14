@@ -1,0 +1,6 @@
+#menubar{
+  background-color: darkblue;
+  grid-area: menubar;
+  color:white;
+  padding: 1.0em;
+}
