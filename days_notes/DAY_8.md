@@ -1,4 +1,4 @@
-# Day 7
+# Day 8
 ## (15 January 2018)
 
 * Today I have continue creating a basic responsive structure, with a menu and some mobile first buttons
@@ -67,5 +67,5 @@ class Pokemon extends Component {
 export default withRouter(Pokemon)
 ```
 
-
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/6ede22e6d73672d296001359d7ba19bee1f6640b
 
