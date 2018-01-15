@@ -13,10 +13,10 @@ const LoadableHome = Loadable({
   }
 });
 
-const LoadableOtherComponent = Loadable({
+const LoadablePokemon = Loadable({
   loader: () => import(
-     /* webpackChunkName: "chunk_otherComponent" */
-    './otherComponent.jsx'),
+     /* webpackChunkName: "chunk_pokemon" */
+    './pokemon.jsx'),
   loading() {
     return <div>Loading...</div>
   }
@@ -25,11 +25,11 @@ const LoadableOtherComponent = Loadable({
 export default class App extends Component {
   render () {
     return  ([
-              <MenuBar/>,
-              <BrowserRouter >
+              <MenuBar  key={'menu'}/>,
+              <BrowserRouter  key={'router'}>
                 <Switch>
                   <Route exact path="/" component={LoadableHome}/>
-                  <Route path="/pathToOtherComponent" component={LoadableOtherComponent}/>
+                  <Route path="/pokemon/:name" component={LoadablePokemon}/>
                 </Switch>
               </BrowserRouter>
             ]);

@@ -15,7 +15,7 @@ module.exports = {
     chunkFilename: '[name].bundle.js'
   },
   resolve: {
-    extensions: [ '.js', '.json', '.jsx', 'css' ]
+    extensions: [ '.js', '.json', '.jsx', 'css', 'svg']
   },
   module : {
     rules : [
@@ -31,9 +31,14 @@ module.exports = {
         use: ['style-loader', 'css-loader']
       },
       {
-        test: /\.(png|jp(e*)g|svg)$/,  
+        test: /\.(png|jp(e*)g)$/,  
         use: ['url-loader']
+      },
+      {
+        test: /\.(svg)$/,
+        loader: 'url-loader?limit=100000&name=./app/dist/imgs/[hash].[ext]'
       }
+    
     ]
   },
   // Source mapping allow us to debug code from src files

@@ -1,5 +1,5 @@
 # Day 7
-## (14 January 2018 uploaded the next day)
+## (14 January 2018)
 
 * Today I have done a very simple structure for the PWA
 
