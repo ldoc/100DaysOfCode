@@ -53,3 +53,5 @@ self.addEventListener('fetch', function(event) {
   "background_color": "#2196F3",
   "theme_color": "#2196F3"
 ```
+
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/26ca51ffd56381477e1b568a3d2f3ae43a9b1fd7
