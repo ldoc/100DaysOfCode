@@ -1,3 +1,9 @@
+# Day 10
+## (17 January 2018)
+
+*  I have extended the service worker functionality to cache some app resources:
+
+```javascript
 var CACHE_NAME = 'funcam';
 var urlsToCache = [
   '/',
@@ -21,11 +27,11 @@ self.addEventListener('install', function(event) {
       })
   );  
 });
+```
 
-self.addEventListener('activate', function(event) {
-  console.log('Finally active. Ready to start serving content!');  
-});
+* After this I have created a listener to fetch that resources from the service worker instead of the web server
 
+```javascript
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.match(event.request)
@@ -39,3 +45,11 @@ self.addEventListener('fetch', function(event) {
     )
   );
 });
+```
+
+* I have added two new configs to manifest.json:
+
+```
+  "background_color": "#2196F3",
+  "theme_color": "#2196F3"
+```
