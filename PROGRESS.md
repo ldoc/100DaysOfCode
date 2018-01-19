@@ -15,3 +15,4 @@
 
 ### Round 3: Specifying the app
 * [Day 11](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_11.md)
+* [Day 12](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_12.md)

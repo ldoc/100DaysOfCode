@@ -1,0 +1,31 @@
+
+<svg x="0" y="0" width="200" height="60">
+
+  <defs>
+  
+    <linearGradient id="initText" x1="0" y1="0" x2="100%" y2="0">
+      <stop offset="0%" stop-color="#399c7d" />
+      <stop offset="100%" stop-color="#f8cb43" />
+    </linearGradient>
+    
+    <linearGradient id="finalText" x1="0" y1="0" x2="100%" y2="0">
+      <stop offset="0%" stop-color="#f8cb43" />
+      <stop offset="100%" stop-color="#399c7d" />
+    </linearGradient>
+    
+    <radialGradient id="cam">
+      <stop offset="10%" stop-color="#86bd78"/>
+      <stop offset="95%" stop-color="#5882FA"/>
+    </radialGradient>
+    
+  </defs>
+  
+  <text x="4" y="40" fill= "url(#initText)" class="text">FUN</text>
+  <path d="M70 60 L100 40 L130 60 Z" stroke-width="4" stroke="#222222" fill="#86bd78"/>
+  <circle cx="100" cy="30" r="25" stroke="#222222" stroke-width="4" fill="url(#cam)" />
+  <circle cx="100" cy="30" r="8" stroke-width="1" fill="lightblue" />
+  <text x="129" y="40" fill= "url(#finalText)" class="text">CAM</text>
+  
+</svg>
+
+

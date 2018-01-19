@@ -3,13 +3,7 @@ var urlsToCache = [
   '/',
   '/bundle.js',
   '/0.bundle.js',
-  '/1.bundle.js',
-  '/img/pokemon1.svg',
-  '/img/pokemon2.svg',
-  '/img/pokemon3.svg',
-  '/img/pokemon4.svg',
-  '/img/pokemon5.svg',
-  '/img/pokemon6.svg'
+  '/1.bundle.js'
 ];
 
 self.addEventListener('install', function(event) {
