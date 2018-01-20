@@ -16,3 +16,6 @@
 ### Round 3: Specifying the app
 * [Day 11](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_11.md)
 * [Day 12](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_12.md)
+
+### Round 4: Playing with HTML5 video and canvas
+* [Day 13](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_13.md)
