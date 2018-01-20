@@ -64,3 +64,4 @@ class CamTest extends Component {
 
 * Tomorrow I have to see some issues with element style
 
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/6b4e19f782f2a05dc58a15769ebafadb193236a0
