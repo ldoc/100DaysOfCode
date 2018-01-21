@@ -4,41 +4,53 @@ class Video extends Component {
 
   constructor(props){
     super(props);
+
+    this.state = {
+      status: 'ok',
+      error: null
+    };
+    this.video = null;
   }
 
-  handleVideo (stream) {
+  handleVideo (video,stream) {
     video.src = window.URL.createObjectURL(stream);
     video.onloadedmetadata = function(e) {
        console.log('do something with the video')
     };
   }
 
-  handleError (e) {
-    console.log(e);
+  handleError = (e) => {
+    this.setState({ ...this.state, status:'error',error: e.name});
   }
 
   componentDidMount () {
-    const {w,h} = this.props;
-    let video = this.refs.cam;
+    this.video = this.refs.cam;
+    const width = this.refs.container.offsetWidth;
+    const height = this.refs.container.offsetHeight;
     if (navigator.getUserMedia) {
       navigator.getUserMedia(
         { 
           video: {
-            width: w,
-            height: h 
+            width: width,
+            height: height 
           }
         },
-        this.handleVideo,
+        this.handleVideo.bind(this,this.video),
         this.handleError
       );
     } 
   }
   
   render(){
-    const {w,h} = this.props;
+    const {status,error} = this.state;
     return (
-      <div width= {w} height={h}>
-        <video id="video" width={w} height={h} autoPlay="autoplay" ref="cam"></video>
+      <div style={{backgroundColor:'gray'}} ref="container" className="videoContainer">
+        { 
+          status == 'ok' ?
+          <video id="video" className="video" autoPlay="autoplay" ref="cam"></video>
+          :
+          <div>{error}</div>
+        }
       </div>)
   }
 }

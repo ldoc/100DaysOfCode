@@ -66,6 +66,15 @@ body,html {
   font-weight: bold;
 }
 
+.videoContainer{
+  display: grid;
+  grid-template-areas:  ". v .";
+}
+
+.video{
+  grid-area: v;
+}
+
 @media (min-width: 1025px) {
   
   #app {
