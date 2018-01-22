@@ -5,7 +5,7 @@ import Video from './video';
 class CamTest extends Component {
   render(){
     return (
-      <Video/>
+      <Video w={640} h={480}/>
     )
   }
 }

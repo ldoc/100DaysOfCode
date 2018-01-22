@@ -67,11 +67,19 @@ body,html {
 }
 
 .videoContainer{
+  height:100%;
+  width:100%;
   display: grid;
-  grid-template-areas:  ". v .";
+  grid-template-areas:  ". . ."
+                        ". v ."
+                        ". . .";
+  grid-template-rows: 1fr 480px 1fr;
+  grid-template-columns: 1fr 640px 1fr;
 }
 
 .video{
+  text-align: center;
+vertical-align: middle; 
   grid-area: v;
 }
 
@@ -104,11 +112,26 @@ body,html {
   .logo{
     transform: scale(1.0);
   }
+  .videoContainer{
+    grid-template-areas:  ". . ."
+                          ". v ."
+                          ". . .";
+    grid-template-rows: 1fr 520px 1fr;
+    grid-template-columns: 1fr 380px 1fr;
+  }
 }
 
 @media (max-width: 480px) {
   #app {
     font-size: 0.9em;
     grid-template-rows: 60px auto;
+  }
+
+  .videoContainer{
+    grid-template-areas:  ". . ."
+                          ". v ."
+                          ". . .";
+    grid-template-rows: 10px 1fr 10px;
+    grid-template-columns: 10px 1fr 10px;
   }
 }
