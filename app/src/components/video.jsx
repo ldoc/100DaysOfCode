@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import imgTile from '../img/tile.png';
+import '../css/video.css';
 
 class Video extends Component {
-
   constructor(props){
     super(props);
-
     this.state = {
       status: 'ok',
-      error: null
+      error: null,
+      device: 'mobile'
     };
+
     this.video = null;
   }
 
@@ -26,26 +27,36 @@ class Video extends Component {
   }
 
   handleResize = () => {
-    //USELESS (reconsider delete this event)
-    // console.log(window.innerWidth);
-    // if(window.innerWidth < 767){
-    //   this.video.style.width = 380;
-    //   this.video.style.height = 520;
-    //   this.video.width = 380;
-    //   this.video.height = 520;
-    // }
-    // else{
-    //   this.video.style.width = 640;
-    //   this.video.style.height = 480;
-    //   this.video.width = 640;
-    //   this.video.height = 480;
-    // }
+    if(window.innerWidth > 767 && this.state.device == 'mobile'){
+      this.setState({...this.state,device:'pc'});
+    }
+    else if(window.innerWidth <= 767 && this.state.device == 'pc'){
+      this.setState({...this.state,device:'mobile'});
+    }
   }
 
+  componentDidUpdate () {
+    this.video = this.refs.cam;
+  
+    if (this.video && navigator.getUserMedia) {
+      navigator.getUserMedia(
+        { 
+          video: {
+            width: this.video.offsetWidth ,
+            height: this.video.offsetHeight 
+          },
+          audio: false
+        },
+        this.handleVideo.bind(this,this.video),
+        this.handleError
+      );
+    } 
+  }
+  
   componentDidMount () {
     this.video = this.refs.cam;
-
-    if (navigator.getUserMedia) {
+  
+    if (this.video && navigator.getUserMedia) {
       navigator.getUserMedia(
         { 
           video: {
@@ -63,7 +74,6 @@ class Video extends Component {
   }
   
   render(){
-    const {w,h} = this.props;
     const {status,error} = this.state;
     const stl = {backgroundColor:'#D9DFDF',width:`100%`,height:`100%`};
     return (

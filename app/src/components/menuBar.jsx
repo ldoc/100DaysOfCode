@@ -8,7 +8,7 @@ export default class MenuBar extends Component {
       <div className={"header"}>
         <Logo/>
         <span></span>
-        <ConfigMenu />
+        <ConfigMenu/>
       </div>
     );
   }

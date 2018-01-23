@@ -1,0 +1,26 @@
+.button{
+  position:absolute;
+  display: table-cell;
+  left: 20px;
+  top: 5.0em;
+  padding:4px;
+  border:solid 1px black;
+  height: 60px;
+  background-color: white;
+}
+
+
+@media (max-width: 767px) {
+
+  .button{
+    right: 70px;
+    top: 4px;
+    left: auto;
+    border: none;
+    background-color: transparent;
+  }
+
+  .button span{
+    display:none;
+  }
+}
