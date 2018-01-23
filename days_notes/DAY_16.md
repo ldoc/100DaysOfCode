@@ -52,4 +52,4 @@ componentDidUpdate () {
 
 * Furthermore, I have created a responsive button element to back to main menu and I have reorganized some css elements to new files
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/983311306566f3a212f344e250c14b791405ccca
