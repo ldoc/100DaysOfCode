@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import imgTile from '../img/tile.png';
 import '../css/video.css';
 
@@ -12,6 +13,8 @@ class Video extends Component {
     };
 
     this.video = null;
+    this.canvas = null;
+    this.context = null;
   }
 
   handleVideo (video,stream) {
@@ -35,7 +38,7 @@ class Video extends Component {
     }
   }
 
-  componentDidUpdate () {
+  initVideo = () => {
     this.video = this.refs.cam;
   
     if (this.video && navigator.getUserMedia) {
@@ -52,39 +55,59 @@ class Video extends Component {
       );
     } 
   }
+
+  initCanvas = () => {
+    this.canvas = this.refs.canvas;
+    this.context = this.canvas.getContext('2d');
+    if (this.video && this.video.videoWidth) {
+      this.context.width = this.video.videoWidth;
+      this.context.height = this.video.videoHeight;
+    }
+    this.drawToCanvas();
+  }
+
+  drawToCanvas = () =>{
+    window.requestAnimationFrame(this.drawToCanvas);
+    this.props.canvasFn(this.context,this.video);
+  }
+
+  componentDidUpdate () {
+    this.initVideo();
+    if(this.props.renderToCanvas) this.initCanvas();
+  }
   
   componentDidMount () {
-    this.video = this.refs.cam;
-  
-    if (this.video && navigator.getUserMedia) {
-      navigator.getUserMedia(
-        { 
-          video: {
-            width: this.video.offsetWidth ,
-            height: this.video.offsetHeight 
-          },
-          audio: false
-        },
-        this.handleVideo.bind(this,this.video),
-        this.handleError
-      );
-    } 
-
+    this.initVideo();
+    if(this.props.renderToCanvas) this.initCanvas();
     window.addEventListener("resize", this.handleResize);
   }
   
   render(){
     const {status,error} = this.state;
-    const stl = {backgroundColor:'#D9DFDF',width:`100%`,height:`100%`};
+    const {renderToCanvas} = this.props;
+    const stlVideo = {display:(renderToCanvas?'none':'block')};
+    const stlCanvas = {display:(renderToCanvas?'block':'none')};
+
     return (
       <div style={{backgroundImage: `url(${imgTile})`}} ref="container" className="videoContainer">
         { 
           status == 'ok' ?
-          <video className="video" autoPlay="autoplay" ref="cam" style={stl}></video>
+          renderToCanvas ?
+            [ 
+              <video className="video" autoPlay="autoplay" ref="cam" style={stlVideo} key="video"></video>,
+              <canvas className="video" ref="canvas" style={stlCanvas} key="canvas"></canvas>
+            ]
+            :
+            <video className="video" autoPlay="autoplay" ref="cam" style={stlVideo}></video>  
           :
-          <div className="video" style={stl}>{error}</div>
+          <div className="video">{error}</div>
         }
       </div>)
+  }
+
+  static propTypes = {
+    renderToCanvas: PropTypes.bool,
+    canvasFn: PropTypes.func
   }
 }
 

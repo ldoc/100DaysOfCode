@@ -22,6 +22,15 @@ const LoadableCamTest = Loadable({
   }
 });
 
+const LoadableCamTestCanvas = Loadable({
+  loader: () => import(
+     /* webpackChunkName: "chunk_camtestcanvas" */
+    './camTestCanvas.jsx'),
+  loading() {
+    return <div>Loading...</div>
+  }
+});
+
 export default class App extends Component {
   render () {
     return  ([
@@ -30,6 +39,7 @@ export default class App extends Component {
                 <Switch>
                   <Route exact path="/" component={LoadableHome}/>
                   <Route path="/camtest/" component={LoadableCamTest}/>
+                  <Route path="/camtestcanvas/" component={LoadableCamTestCanvas}/>
                 </Switch>
               </BrowserRouter>
             ]);

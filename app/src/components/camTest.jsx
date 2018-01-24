@@ -8,7 +8,7 @@ class CamTest extends Component {
     return (
       [
         <Button text="Back to menu" img="back.svg" link=""/>,
-        <Video w={640} h={480}/>
+        <Video/>
       ]
     )
   }
