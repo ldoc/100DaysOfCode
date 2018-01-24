@@ -95,4 +95,4 @@ render(){
   }
 ```
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/1297e2a092c028a8c16345b730792381991bbf14
