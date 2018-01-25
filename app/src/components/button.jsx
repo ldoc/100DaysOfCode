@@ -5,9 +5,7 @@ import '../css/button.css';
 
 export default class Button extends Component {
   render(){
-
     const {img,text,link} = this.props;
-
     return (
       <div className={"button"}>
         <Link to={`${link}`}>
@@ -16,7 +14,6 @@ export default class Button extends Component {
         </Link>
       </div>
     );
-    
   }
 
   static propTypes = {

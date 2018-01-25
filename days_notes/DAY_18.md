@@ -1,9 +1,12 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import Video from './video';
-import Button from './button';
+# Day 18
+## (25 January 2018)
 
-class CamTestCanvas extends Component {
+* I have created a tools folder and a canvasTools file where to add helper functions
+
+* I have continued playing with canvas pixels modifications for different colors
+
+```javascript
+  class CamTestCanvas extends Component {
 
   constructor(props){
     super(props);
@@ -45,5 +48,7 @@ class CamTestCanvas extends Component {
     )
   }
 }
+```
+* Next days I have to create a button options menus to launch actions.
 
-export default withRouter(CamTestCanvas)
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
