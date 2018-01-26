@@ -19,6 +19,7 @@ class Video extends Component {
 
   handleVideo (video,stream) {
     video.src = window.URL.createObjectURL(stream);
+    if(this.props.renderToCanvas) this.initCanvas();
     video.onloadedmetadata = function(e) {
        console.log('do something with the video')
     };
@@ -73,12 +74,10 @@ class Video extends Component {
 
   componentDidUpdate () {
     this.initVideo();
-    if(this.props.renderToCanvas) this.initCanvas();
   }
   
   componentDidMount () {
     this.initVideo();
-    if(this.props.renderToCanvas) this.initCanvas();
     window.addEventListener("resize", this.handleResize);
   }
   

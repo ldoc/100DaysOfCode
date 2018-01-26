@@ -32,14 +32,26 @@ const LoadableCamTestCanvas = Loadable({
 });
 
 export default class App extends Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      options : []
+    }
+  }
+
+  setConfigOptions = (options) =>{
+    this.setState({...this.state,...{options:options}});
+  }  
+
   render () {
     return  ([
-              <MenuBar  key={'menu'}/>,
-              <BrowserRouter  key={'router'}>
+              <MenuBar key={'menu'} {...this.state}/>,
+              <BrowserRouter key={'router'}>
                 <Switch>
                   <Route exact path="/" component={LoadableHome}/>
-                  <Route path="/camtest/" component={LoadableCamTest}/>
-                  <Route path="/camtestcanvas/" component={LoadableCamTestCanvas}/>
+                  <Route path="/camtest/" render={(props) => (<LoadableCamTest {...props} setConfigOptions = {this.setConfigOptions} />)}/>
+                  <Route path="/camtestcanvas/"  render={(props) => (<LoadableCamTestCanvas {...props} setConfigOptions = {this.setConfigOptions} />)}/>
                 </Switch>
               </BrowserRouter>
             ]);

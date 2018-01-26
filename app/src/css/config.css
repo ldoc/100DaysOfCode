@@ -1,0 +1,39 @@
+.config{
+  display:block;
+  cursor: pointer;
+}
+
+.line {
+  stroke: #222222; 
+  stroke-width: 6px;
+  stroke-linecap: round;
+}
+
+.optionsConfig{
+  position:absolute;
+  right:0px;
+  top: 70px;
+  font-size: 2.0rem;
+  cursor: pointer;
+}
+
+.optionConfig{
+  margin: 5px;
+  padding: 5px;
+  border:solid 1px black;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-align: center;
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  /* .config{
+    display:block;
+  } */
+}
+
+@media (max-width: 480px) {
+  /* .config{
+    display:block;
+  } */
+}

@@ -52,16 +52,6 @@ body,html {
   transform: scale(0.9);
 }
 
-.config{
-  display:none;
-}
-
-.line {
-  stroke: #222222; 
-  stroke-width: 6px;
-  stroke-linecap: round;
-}
-
 .text{
   font-family: Verdana; 
   font-size: 28px; 
@@ -99,17 +89,11 @@ body,html {
   .logo{
     transform: scale(1.0);
   }
-  .config{
-    display:block;
-  }
 }
 
 @media (max-width: 480px) {
   #app {
     font-size: 1.1em;
     grid-template-rows: 60px auto;
-  }
-  .config{
-    display:block;
   }
 }
