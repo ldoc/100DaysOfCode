@@ -61,7 +61,7 @@ class CamTestCanvas extends Component {
     return (
       [
         <Button text="Back to menu" img="back.svg" link="" key="button"/>,
-        <Video renderToCanvas={true} canvasFn={this.state.fn} key="video"/>,
+        <Video renderToCanvas={true} canvasFn={this.state.fn} key="video"/>
       ]
     )
   }

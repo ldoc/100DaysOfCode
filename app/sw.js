@@ -1,9 +1,6 @@
 var CACHE_NAME = 'funcam';
 var urlsToCache = [
-  '/',
-  '/bundle.js',
-  '/0.bundle.js',
-  '/1.bundle.js'
+  '/'
 ];
 
 self.addEventListener('install', function(event) {

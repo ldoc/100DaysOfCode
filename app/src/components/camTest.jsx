@@ -14,8 +14,8 @@ class CamTest extends Component {
   render(){
     return (
       [
-        <Button text="Back to menu" img="back.svg" link=""/>,
-        <Video/>
+        <Button text="Back to menu" img="back.svg" link="" key="button"/>,
+        <Video key="video"/>
       ]
     )
   }

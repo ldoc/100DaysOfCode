@@ -68,8 +68,10 @@ class Video extends Component {
   }
 
   drawToCanvas = () =>{
-    window.requestAnimationFrame(this.drawToCanvas);
-    this.props.canvasFn(this.context,this.video);
+    if(this.context.canvas){
+      window.requestAnimationFrame(this.drawToCanvas);
+      this.props.canvasFn(this.context,this.video);
+    }
   }
 
   componentDidUpdate () {
@@ -80,7 +82,7 @@ class Video extends Component {
     this.initVideo();
     window.addEventListener("resize", this.handleResize);
   }
-  
+
   render(){
     const {status,error} = this.state;
     const {renderToCanvas} = this.props;
