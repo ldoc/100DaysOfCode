@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { HashRouter , Route, Switch } from 'react-router-dom';
 import Loadable from 'react-loadable';
 import MenuBar from './menuBar';
 import '../css/app.css';
@@ -47,13 +47,13 @@ export default class App extends Component {
   render () {
     return  ([
               <MenuBar key={'menu'} {...this.state}/>,
-              <BrowserRouter key={'router'}>
+              <HashRouter outer key={'router'}>
                 <Switch>
                   <Route exact path="/" component={LoadableHome}/>
                   <Route path="/camtest/" render={(props) => (<LoadableCamTest {...props} setConfigOptions = {this.setConfigOptions} />)}/>
                   <Route path="/camtestcanvas/"  render={(props) => (<LoadableCamTestCanvas {...props} setConfigOptions = {this.setConfigOptions} />)}/>
                 </Switch>
-              </BrowserRouter>
+              </HashRouter>
             ]);
   }
 }

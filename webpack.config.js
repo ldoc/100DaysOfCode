@@ -11,7 +11,7 @@ module.exports = {
   output: { 
     path: DIST_DIR,
     filename: 'bundle.js',
-    publicPath: '/dist/',
+    publicPath: './dist/',
     chunkFilename: '[name].bundle.js'
   },
   resolve: {
@@ -46,8 +46,7 @@ module.exports = {
   // Dev Server configuration
   devServer: { 
     contentBase: './app/',
-    hot: true, // with hot reload
-    historyApiFallback: true
+    hot: true // with hot reload
   },
   plugins : [
     new webpack.NamedModulesPlugin(),
