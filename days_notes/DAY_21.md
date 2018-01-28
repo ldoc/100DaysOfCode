@@ -9,4 +9,4 @@
 
 * Also, I have corrected some bugs with absolute pathes.
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/6d6e09efcdd6aef0d0390d792e7623c415aa27df
