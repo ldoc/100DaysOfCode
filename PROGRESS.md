@@ -25,7 +25,10 @@
 * [Day 17](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_17.md)
 * [Day 18](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_18.md)
 
-### Round 4: Responsive actions menu and deploying to real HTTPS server
+### Round 5: Responsive actions menu and deploying to real HTTPS server
 * [Day 19](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_19.md)
 * [Day 20](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_20.md)
 * [Day 21](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_21.md)
+
+### Round 6: Canvas time !!
+* [Day 22](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_22.md)

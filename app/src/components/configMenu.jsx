@@ -13,10 +13,15 @@ export default class ConfigMenu extends Component {
 
   renderOption = (option) => {
     return (
-      <div className="optionConfig" onClick={() => { option.action(); this.setMenu(); }} key={option.id}>
+      <div className="optionConfig" onClick={() => this.optionAction(option)} key={option.id}>
         {option.text}
       </div>
     )
+  }
+
+  optionAction = (option) => {
+    option.action(); 
+    if(!option.keepOpen) this.setMenu(); 
   }
 
   setMenu = () =>{
@@ -25,6 +30,7 @@ export default class ConfigMenu extends Component {
   }
 
   render(){
+    const {options} = this.props;
     return (
       [
       <svg x="0" y="0" width="60" height="60" float="right" className="config" onClick = {this.setMenu} key="button">
@@ -35,7 +41,7 @@ export default class ConfigMenu extends Component {
       , 
       <div className="optionsConfig" key="options">
         {this.state.dropped ?
-          this.props.options.map((o) => this.renderOption(o))
+          options.map((o) => this.renderOption(o))
           :
           null  
         }

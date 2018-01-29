@@ -3,6 +3,8 @@ const SRC_DIR = path.resolve(__dirname, 'app/src'); // Source directory
 const DIST_DIR = path.resolve(__dirname, 'app/dist'); // Distribution directory
 const webpack = require('webpack');
 
+const ENV = process.env.NODE_ENV;
+
 module.exports = {
   entry: {
     client: SRC_DIR + '/index.js' // My entry file
@@ -11,7 +13,7 @@ module.exports = {
   output: { 
     path: DIST_DIR,
     filename: 'bundle.js',
-    publicPath: './dist/',
+    publicPath: ENV == 'development' ? 'dist/' : './dist/',
     chunkFilename: '[name].bundle.js'
   },
   resolve: {

@@ -1,17 +1,9 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
-import Video from './video';
-import Button from './button';
+# Day 22
+## (29 January 2018)
 
-class CamTestCanvas extends Component {
+* Today I have modifyied the configMenu to allow load submenus, now I have to sections in page component camTestCanvas: Color and Effects
 
-  constructor(props){
-    super(props);
-    this.state ={
-      fn: this.doNothing
-    }
-
+```javascript
     this.optionsMenu = [
       {
         id: 1,
@@ -64,37 +56,19 @@ class CamTestCanvas extends Component {
     ]
 
     this.props.setConfigOptions(this.optionsMenu);
-  }
+```
 
-  changeConfigMenu = (options) => {
-    this.props.setConfigOptions(options);
-  }
+* Finally I have created a Mirror effect
 
-  doNothing = (context,video) =>{
-    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
-  }
-
-  changeColor = (context,video,color) => {
-    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
-    let pixels = context.getImageData(0, 0, context.canvas.width, context.canvas.height),
-        i = 0,
-        brightness;
-    for (; i < pixels.data.length; i += 4) {
-      brightness = ((3*pixels.data[i]+4*pixels.data[i+1]+pixels.data[i+2])>>>3) / 256;
-      pixels.data[i] = ((color[0] * brightness)+0.5)>>0;
-      pixels.data[i+1] = ((color[1]  * brightness)+0.5)>>0
-      pixels.data[i+2] = ((color[2]  * brightness)+0.5)>>0
-    }
-    context.putImageData(pixels, 0, 0);
-  }
-
+```javascript
   mirror = (context,video) => {
     context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
     let pixels = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
     const w = pixels.width;
     const h = pixels.height;
-    for(let y = 0; y < h; y++) {
-      for(let x = 0; x < w / 2; x++) { 
+    for(let y = 0; y < h; y++) { // Iterate all the columns
+      for(let x = 0; x < w / 2; x++) { // Only iterate half part of canvas
+        // Take the RGBA of the pixel that I´m gonna reflect
         let off = ((w * y) + x) * 4; 
 
         let r = pixels.data[off];
@@ -102,8 +76,11 @@ class CamTestCanvas extends Component {
         let b = pixels.data[off + 2];
         let a = pixels.data[off + 3];
 
+        //Calculate the position to the mirror half part
+
         let mirroroff = (w - (x * 2)) * 4;
 
+        // And assign 
         pixels.data[off + mirroroff] = r;
         pixels.data[off + 1 + mirroroff] = g;
         pixels.data[off + 2 + mirroroff] = b;
@@ -112,19 +89,7 @@ class CamTestCanvas extends Component {
     }
     context.putImageData(pixels, 0, 0);
   }
+```
 
-  render(){
-    return (
-      [
-        <Button text="Back to menu" img="back.svg" link="" key="button"/>,
-        <Video renderToCanvas={true} canvasFn={this.state.fn} key="video"/>
-      ]
-    )
-  }
-  
-  static propTypes = {
-    setConfigOptions: PropTypes.func
-  }
-}
 
-export default withRouter(CamTestCanvas)
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
