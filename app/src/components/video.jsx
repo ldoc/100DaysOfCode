@@ -69,10 +69,18 @@ class Video extends Component {
 
   drawToCanvas = () =>{
     if(this.context.canvas){
-      window.requestAnimationFrame(this.drawToCanvas);
+      this.requestAnimationFrame(this.drawToCanvas);
       this.props.canvasFn(this.context,this.video);
     }
   }
+
+  requestAnimationFrame = (window.requestAnimationFrame
+    || window.mozRequestAnimationFrame
+    || window.webkitRequestAnimationFrame
+    || window.msRequestAnimationFrame
+    || function(f){
+      return setTimeout(f, 1000/60)
+    }).bind(window);
 
   componentDidUpdate () {
     this.initVideo();
@@ -82,6 +90,8 @@ class Video extends Component {
     this.initVideo();
     window.addEventListener("resize", this.handleResize);
   }
+
+ 
 
   render(){
     const {status,error} = this.state;
