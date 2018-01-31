@@ -33,3 +33,4 @@
 ### Round 6: Canvas time !!
 * [Day 22](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_22.md)
 * [Day 23](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_23.md)
+* [Day 24](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_24.md)
