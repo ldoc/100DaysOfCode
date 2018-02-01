@@ -46,8 +46,8 @@ class Video extends Component {
       navigator.getUserMedia(
         { 
           video: {
-            width: this.video.offsetWidth ,
-            height: this.video.offsetHeight 
+            width: 1280 ,
+            height: 720
           },
           audio: false
         },
