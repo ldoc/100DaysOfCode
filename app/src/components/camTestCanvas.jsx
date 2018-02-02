@@ -30,6 +30,12 @@ class CamTestCanvas extends Component {
         text: 'Shapes',
         action: () => this.changeConfigMenu(this.optionsShapes),
         keepOpen: true
+      },
+      {
+        id: 4,
+        text: 'Transform and Anim',
+        action: () => this.changeConfigMenu(this.optionsTranfAnim),
+        keepOpen: true
       }
     ];
 
@@ -96,12 +102,30 @@ class CamTestCanvas extends Component {
         action: () => {this.setState({...this.state, fn:(context,video)=>this.textAndImages(context,video)});this.changeConfigMenu(this.optionsMenu);}
       }
     ]
+
+    this.optionsTranfAnim = [
+      {
+        id: 1,
+        text: 'Translate,Scale and Rotate',
+        action: () => {this.setState({...this.state, fn:(context,video)=>this.translate(context,video)});this.changeConfigMenu(this.optionsMenu);}
+      }
+    ]
+    
+
     this.imgMountains = new Image();
     this.imgMountains.src = '../img/mountains.png';
     this.imgBanner = new Image();
     this.imgBanner.src = '../img/banner.png';
     this.imgEagle = new Image();
     this.imgEagle.src = '../img/eagle.png';
+
+
+    this.moon = new Image();
+    this.earth = new Image();
+    
+  
+    this.moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+    this.earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
 
     this.props.setConfigOptions(this.optionsMenu);
   }
@@ -327,6 +351,34 @@ class CamTestCanvas extends Component {
     context.strokeStyle = 'black';
     context.stroke();
   }
+
+ translate = (context,video) => {
+ 
+  context.globalCompositeOperation = 'destination-over';
+  context.clearRect(0,0,300,300); 
+
+  context.save();
+  context.translate(150,150);
+
+  // the earth
+  var time = new Date();
+  context.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
+  context.translate(105,0);
+  context.drawImage(this.earth,-12,-12);
+
+  // the moon
+  context.save();
+  context.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
+  context.translate(0,28.5);
+  context.drawImage(this.moon,-3.5,-3.5);
+  context.restore();
+  context.restore();
+  
+  context.beginPath();
+  context.stroke();
+  context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
+
+}
 
   render(){
     return (
