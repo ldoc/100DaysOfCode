@@ -12,7 +12,7 @@
 emsdk update
 ```
 
-** Download and install the latest SDK tools.
+- Download and install the latest SDK tools.
 ```
 emsdk install latest
 ```
@@ -21,7 +21,7 @@ emsdk install latest
 ```
 emsdk activate latest
 
-** Activate PATH and other environment variables in the current terminal
+- Activate PATH and other environment variables in the current terminal
 ```
 emsdk_env.bat
 ```
@@ -43,4 +43,5 @@ int main(int argc, char ** argv) {
 emcc ./app/wasm/test.c -s WASM=1 -O3 -o ./app/wasm/index.js
 ``` 
 
-That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/0b018b8cbd78be17238214e803e03f6cf716ddf1
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/0b018b8cbd78be17238214e803e03f6cf716ddf1
+
