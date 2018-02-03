@@ -3,11 +3,11 @@
 
 * Installing emscripten
 
-** First download the last version of [emscripten](https://kripken.github.io/emscripten-site/docs/getting_started/downloads.html)
+- First download the last version of [emscripten](https://kripken.github.io/emscripten-site/docs/getting_started/downloads.html)
 
-** Unzip into any folder
+- Unzip into any folder
 
-** Fetch the latest registry of available tools.
+- Fetch the latest registry of available tools.
 ```
 emsdk update
 ```
@@ -26,9 +26,9 @@ emsdk activate latest
 emsdk_env.bat
 ```
 
-** Compile a C code:
+- Compile a C code:
 
-```c
+```
 #include <stdio.h>
 #include <stdlib.h>
 #include <emscripten/emscripten.h>
@@ -42,3 +42,5 @@ int main(int argc, char ** argv) {
 ```
 emcc ./app/wasm/test.c -s WASM=1 -O3 -o ./app/wasm/index.js
 ``` 
+
+That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/0b018b8cbd78be17238214e803e03f6cf716ddf1
