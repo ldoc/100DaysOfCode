@@ -36,3 +36,6 @@
 * [Day 24](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_24.md)
 * [Day 25](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_25.md)
 * [Day 26](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_26.md)
+
+### Round 7: Introduction to WebAssembly
+* [Day 27](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_27.md)
