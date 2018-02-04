@@ -3,7 +3,7 @@
 
 * Making a simple WASM test 
 
-** This is my c code:
+* This is my c code:
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -28,14 +28,14 @@ int EMSCRIPTEN_KEEPALIVE get_random_number() {
 }
 ```
 
-** Then I compile it to .wasm:
+* Then I compile it to .wasm:
 ```
 emcc ./app/wasm/test.c -s WASM=1 -O3 -o ./app/wasm/index.js
 ``` 
 
-** It will create an index.wasm and index.js file
+* It will create an index.wasm and index.js file
 
-** Finally I have created a testwam.html file where launch the wasm functions
+* Finally I have created a testwam.html file where launch the wasm functions
 
 ```html
 <!DOCTYPE html>
@@ -59,4 +59,4 @@ emcc ./app/wasm/test.c -s WASM=1 -O3 -o ./app/wasm/index.js
 </html> 
 ```
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/07a5685a5fcbffe3eda4bc87d41fd7bd41a1b23b
