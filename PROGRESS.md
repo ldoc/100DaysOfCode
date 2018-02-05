@@ -40,3 +40,4 @@
 ### Round 7: Introduction to WebAssembly
 * [Day 27](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_27.md)
 * [Day 28](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_28.md)
+* [Day 29](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_29.md)
