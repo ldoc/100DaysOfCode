@@ -36,6 +36,12 @@ class CamTestCanvas extends Component {
         text: 'Transform and Anim',
         action: () => this.changeConfigMenu(this.optionsTranfAnim),
         keepOpen: true
+      },
+      {
+        id: 5,
+        text: 'WASM filters',
+        action: () => this.changeConfigMenu(this.optionsWasmFilters),
+        keepOpen: true
       }
     ];
 
@@ -110,6 +116,20 @@ class CamTestCanvas extends Component {
         action: () => {this.setState({...this.state, fn:(context,video)=>this.translate(context,video)});this.changeConfigMenu(this.optionsMenu);}
       }
     ]
+
+    this.optionsWasmFilters = [
+      {
+        id: 1,
+        text: 'Gray scale',
+        action: () => {this.setState({...this.state, fn:(context,video)=>this.wasm_gray(context,video)});this.changeConfigMenu(this.optionsMenu);}
+      },
+      {
+        id: 2,
+        text: 'Invert colors',
+        action: () => {this.setState({...this.state, fn:(context,video)=>this.wasm_invert(context,video)});this.changeConfigMenu(this.optionsMenu);}
+      }
+    ]
+    
     
 
     this.imgMountains = new Image();
@@ -379,6 +399,22 @@ class CamTestCanvas extends Component {
   context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
 
 }
+
+  wasm_gray = (context,video) =>{
+    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
+    let pixels = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+    let data = filtersWASM.grayScale(pixels.data);
+    pixels.data.set(data);
+    context.putImageData(pixels, 0, 0);
+  }
+
+  wasm_invert = (context,video) =>{
+    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
+    let pixels = context.getImageData(0, 0, context.canvas.width, context.canvas.height);
+    let data = filtersWASM.invert(pixels.data);
+    pixels.data.set(data);
+    context.putImageData(pixels, 0, 0);
+  }
 
   render(){
     return (
