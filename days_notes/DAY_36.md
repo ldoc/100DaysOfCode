@@ -54,5 +54,5 @@ const Routes = (setConfigOptions) => (
 export default Routes;
 ```
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/a65c422f16be7fe3bcc0ea5124a31d1c5e16509b
 
