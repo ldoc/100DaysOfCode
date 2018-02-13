@@ -91,8 +91,6 @@ class Video extends Component {
     window.addEventListener("resize", this.handleResize);
   }
 
- 
-
   render(){
     const {status,error} = this.state;
     const {renderToCanvas} = this.props;
@@ -106,7 +104,7 @@ class Video extends Component {
           renderToCanvas ?
             [ 
               <video className="video" autoPlay="autoplay" ref="cam" style={stlVideo} key="video"></video>,
-              <canvas className="video" ref="canvas" style={stlCanvas} key="canvas"></canvas>
+              <canvas className="video" ref="canvas" style={stlCanvas} key="canvas" width={this.state.device == 'pc' ? 640:380} height={this.state.device == 'pc' ? 480:520}></canvas>
             ]
             :
             <video className="video" autoPlay="autoplay" ref="cam" style={stlVideo}></video>  

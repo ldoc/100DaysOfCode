@@ -1,3 +1,12 @@
+# Day 37
+## (13 February 2018)
+
+* Today I have created an onvideo help to guide to the user to configure the chroma
+
+* Futhermore, I have implemented an event caputure of mouse over canvas to allow user to choose a color from it
+
+
+```javascript
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
@@ -118,3 +127,14 @@ class Chroma extends Component {
 }
 
 export default withRouter(Chroma)
+```
+
+* Whe I was testing the mouse position capture event I have caught an error with canvas dimensions, I was´nt passing the correct width and height to the canvas element and it was rendering a little fuzzy
+
+```javascript
+<canvas className="video" ref="canvas" style={stlCanvas} key="canvas" width={this.state.device == 'pc' ? 640:380} height={this.state.device == 'pc' ? 480:520}></canvas>
+```
+
+
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+
