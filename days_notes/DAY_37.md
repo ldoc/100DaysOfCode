@@ -136,5 +136,5 @@ export default withRouter(Chroma)
 ```
 
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/1394bed4c2566ee13ec1aec29a824e1d7fe21456
 
