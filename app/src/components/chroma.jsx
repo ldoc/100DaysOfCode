@@ -40,22 +40,51 @@ class Chroma extends Component {
     
     this.steps = [
       {step: 0, text: 'Hi welcome to chroma app', fn: this.step_zero},
-      {step: 1, text: 'Choose a color touching or making click into the cam video', fn: this.step_one}
+      {step: 1, text: 'Choose a color touching or making click into the cam video', fn: this.step_one},
+      {step: 2, text: 'Choose an image', fn: this.step_two}
     ]
+
+    this.cursorPos = {x:0,y:0};
+    this.cursorPosColor = [];
   }
 
   componentDidUpdate (prevProps, prevState) {
+    
     if(this.state.currentStep == 1 && prevState.currentStep == 0){
       const canvas = this.refs.video.refs.canvas;
-
-      canvas.addEventListener("mousemove",(e) => {
-        var eventLocation = this.getEventLocation(canvas,e);
-        var coord = "x=" + eventLocation.x + ", y=" + eventLocation.y;
-        var pixelData = canvas.getContext('2d').getImageData(eventLocation.x, eventLocation.y, 1, 1).data; 
-        console.log(coord);
-        console.log(pixelData);
-      },false);
+      this.fMouseMove = this.handleMouseMove.bind(null,canvas);
+      this.fClick = this.handleClick.bind(null,canvas);
+      canvas.addEventListener('mousemove',this.fMouseMove,true);
+      canvas.addEventListener('click',this.fClick,true);
     }
+    else if(this.state.currentStep == 2 && prevState.currentStep == 1){
+      const canvas = this.refs.video.refs.canvas;
+      canvas.removeEventListener('click', this.fClick, true);
+      this.refs.selImg.click();
+      this.refs.selImg.onchange = this.handleGetImage;
+    }
+  }
+
+  handleMouseMove = (canvas,e) => {
+    this.pos = this.getEventLocation(canvas,e);
+    this.cursorPosColor = canvas.getContext('2d').getImageData(this.pos.x, this.pos.y, 1, 1).data; 
+  }
+
+  handleClick = (canvas,e) => {
+    canvas.removeEventListener('mousemove', this.fMouseMove, true);
+    this.setState({currentStep: 2});
+  }
+
+  handleGetImage = (e) => {
+    const file = e.target.files[0]; 
+
+    if (!file.type.match('image.*')) {
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e) => {console.log(e.target.result)}
+    reader.readAsDataURL(file);
   }
 
   addText = (c,text) => {
@@ -67,9 +96,11 @@ class Chroma extends Component {
     c.fillText(text, 10, 20);
   }
 
-  addRect = (c, color) => {
-    c.rect(20,20,20,20);
+  addRect = (c) => {
+    c.rect(40,40,20,20);
+    c.fillStyle = `rgba(${this.cursorPosColor[0]}, ${this.cursorPosColor[1]}, ${this.cursorPosColor[2]}, ${this.cursorPosColor[3]})`;
     c.stroke();
+    c.fill();
   }
   
   step_zero = (context,video) =>{
@@ -80,7 +111,13 @@ class Chroma extends Component {
   step_one = (context,video) =>{
     context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
     this.addText(context,this.steps[this.state.currentStep].text);
-    this.addRect(context,null);
+    this.addRect(context);
+  }
+
+  step_two = (context,video) =>{
+    context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
+    this.addText(context,this.steps[this.state.currentStep].text);
+    this.addRect(context);
   }
 
   getElementPosition = (obj) => {
@@ -107,7 +144,8 @@ class Chroma extends Component {
     return (
       [
         <Button text="Back to menu" img="back.svg" link="" key="button"/>,
-        <Video renderToCanvas={true} canvasFn={this.steps[this.state.currentStep].fn} key="video" ref="video"/>
+        <Video renderToCanvas={true} canvasFn={this.steps[this.state.currentStep].fn} key="video" ref="video"/>,
+        <input name="myFile" type="file" style={{display:'none'}} key="selImg" ref="selImg"/>
       ]
     )
   }
