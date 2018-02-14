@@ -7,5 +7,5 @@
 
 * Can see the code in the [chroma.jsx file](https://github.com/ldoc/100DaysOfCode/blob/master/app/src/components/chroma.jsx)
 
-#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/
+#### That's all folks,look at the commit for more info: https://github.com/ldoc/100DaysOfCode/commit/7b47605f701dcb081668fad4be5d247d32598805
 
