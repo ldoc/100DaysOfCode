@@ -48,7 +48,8 @@
 * [Day 34](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_34.md)
 * [Day 35](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_35.md)
 
-### Round 7: Doing a chroma mini app
+### Round 8: Doing a chroma mini app
 * [Day 36](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_36.md)
 * [Day 37](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_37.md)
 * [Day 38](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_38.md)
+* [Day 39](https://github.com/ldoc/100DaysOfCode/blob/master/days_notes/DAY_39.md)

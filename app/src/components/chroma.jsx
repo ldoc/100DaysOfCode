@@ -28,8 +28,14 @@ class Chroma extends Component {
       },
       {
         id: 3,
-        text: 'Adjust tolerance',
-        action: () => {},
+        text: 'Increase tolerance',
+        action: () => {this.tolerance += 10;},
+        keepOpen: true
+      },
+      {
+        id: 4,
+        text: 'Reduce tolerance',
+        action: () => {this.tolerance -= 10;},
         keepOpen: true
       }
     ];
@@ -41,11 +47,13 @@ class Chroma extends Component {
     this.steps = [
       {step: 0, text: 'Hi welcome to chroma app', fn: this.step_zero},
       {step: 1, text: 'Choose a color touching or making click into the cam video', fn: this.step_one},
-      {step: 2, text: 'Choose an image', fn: this.step_two}
+      {step: 2, text: 'Choose an image', fn: this.step_two},
+      {step: 3, text: '', fn: this.step_three}
     ]
 
     this.cursorPos = {x:0,y:0};
     this.cursorPosColor = [];
+    this.tolerance = 60;
   }
 
   componentDidUpdate (prevProps, prevState) {
@@ -83,7 +91,14 @@ class Chroma extends Component {
     }
 
     const reader = new FileReader();
-    reader.onload = (e) => {console.log(e.target.result)}
+    reader.onload = (e) => {
+      this.bgImage = new Image();
+      this.bgImage.onload = () =>{
+        this.setState({currentStep: 3, cursorPosColor: this.cursorPosColor});
+      }
+      this.bgImage.src = e.target.result;
+      
+    }
     reader.readAsDataURL(file);
   }
 
@@ -103,21 +118,52 @@ class Chroma extends Component {
     c.fill();
   }
   
-  step_zero = (context,video) =>{
+  step_zero = (context,video) => {
     context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
     this.addText(context,this.steps[this.state.currentStep].text);
   }
 
-  step_one = (context,video) =>{
+  step_one = (context,video) => {
     context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
     this.addText(context,this.steps[this.state.currentStep].text);
     this.addRect(context);
   }
 
-  step_two = (context,video) =>{
+  step_two = (context,video) => {
     context.drawImage(video, 0, 0, video.videoWidth, video.videoHeight, 0, 0, context.canvas.width, context.canvas.height);
     this.addText(context,this.steps[this.state.currentStep].text);
     this.addRect(context);
+  }
+
+  step_three = (context,video) => {
+    // The color key
+    const cCatch = this.state.cursorPosColor;
+    const cw = context.canvas.width, ch = context.canvas.height, vw = video.videoWidth, vh = video.videoHeight;
+    // Getting video image
+    context.drawImage(video, 0, 0, vw, vh , 0, 0, cw, ch);
+    let vPixels = context.getImageData(0, 0, cw, ch);
+    context.clearRect(0, 0, cw, ch);
+
+     // Getting bg image
+    context.drawImage(this.bgImage, 0, 0, cw, ch);
+    let bgPixels = context.getImageData(0, 0, cw, ch);
+    context.clearRect(0, 0, cw, ch);
+
+    // Replacing video pixels that are beetween color and tolerance limits for pixels from background image 
+    for (let i=0; i < vPixels.data.length; i += 4) {
+      if( vPixels.data[i]   >= cCatch[0] - this.tolerance && vPixels.data[i]   <= cCatch[0] + this.tolerance  &&
+          vPixels.data[i+1] >= cCatch[1] - this.tolerance && vPixels.data[i+1] <= cCatch[1] + this.tolerance  && 
+          vPixels.data[i+2] >= cCatch[2] - this.tolerance && vPixels.data[i+2] <= cCatch[2] + this.tolerance)
+      {
+        vPixels.data[i] = bgPixels.data[i];
+        vPixels.data[i+1] = bgPixels.data[i+1];
+        vPixels.data[i+2] = bgPixels.data[i+2];
+        vPixels.data[i+3] = bgPixels.data[i+3];
+      } 
+    }
+
+    // Paint !!
+    context.putImageData(vPixels, 0, 0);
   }
 
   getElementPosition = (obj) => {
