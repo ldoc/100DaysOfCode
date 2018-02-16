@@ -17,13 +17,13 @@ class Chroma extends Component {
       {
         id: 1,
         text: 'Choose chroma color',
-        action: () => {},
+        action: () => {this.setState({currentStep: 1})},
         keepOpen: true
       },
       {
         id: 2,
         text: 'Choose chroma image',
-        action: () => {},
+        action: () => {this.setState({currentStep: 2})},
         keepOpen: true
       },
       {
@@ -58,14 +58,14 @@ class Chroma extends Component {
 
   componentDidUpdate (prevProps, prevState) {
     
-    if(this.state.currentStep == 1 && prevState.currentStep == 0){
+    if(this.state.currentStep == 1 && prevState.currentStep != 1){
       const canvas = this.refs.video.refs.canvas;
       this.fMouseMove = this.handleMouseMove.bind(null,canvas);
       this.fClick = this.handleClick.bind(null,canvas);
       canvas.addEventListener('mousemove',this.fMouseMove,true);
       canvas.addEventListener('click',this.fClick,true);
     }
-    else if(this.state.currentStep == 2 && prevState.currentStep == 1){
+    else if(this.state.currentStep == 2 && prevState.currentStep != 2){
       const canvas = this.refs.video.refs.canvas;
       canvas.removeEventListener('click', this.fClick, true);
       this.refs.selImg.click();

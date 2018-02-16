@@ -41,7 +41,7 @@ class Video extends Component {
 
   initVideo = () => {
     this.video = this.refs.cam;
-  
+
     if (this.video && navigator.getUserMedia) {
       navigator.getUserMedia(
         { 
@@ -83,6 +83,12 @@ class Video extends Component {
     }).bind(window);
 
   componentDidUpdate () {
+    if(window.innerWidth > 767 && this.state.device == 'mobile'){
+      this.setState({...this.state,device:'pc'});
+    }
+    else if(window.innerWidth <= 767 && this.state.device == 'pc'){
+      this.setState({...this.state,device:'mobile'});
+    }
     this.initVideo();
   }
   
